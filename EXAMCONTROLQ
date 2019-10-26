@@ -1,0 +1,26 @@
+<!DOCTYPE DEALERSHIPS [
+<!ELEMENT DEALERSHIPS(DEALER*,MODEL*)>
+<!ELEMENT DEALER(SELLS+)>
+  <!ATTLIST DEALER name ID #REQUIRED>
+<!ELEMENT SELLS(#PCDATA)>
+  <!ATTLIST SELLS themodel IDREF #REQUIRED>
+<!ELEMENT MODEL EMPTY>
+  <!ATTLIST MODEL name ID #REQUIRED>
+  <!ATTLIST MODEL soldBy IDREFS #IMPLIED>
+]>
+
+<DEALERSHIP>
+<DEALER name = "Oshawa Dealership">
+  <SELLS themodel = "corolla"> 15,000.00 </SELLS>
+</DEALER>
+<MODEL name = "corolla" soldBy = "Oshawa Dealership">
+</MODEL>
+</DEALERSHIP>
+
+<xs:complexType name = "modeltype">
+<xs:sequence>
+<xs:element name = "NAME"
+  type = "xs:string"
+  minOccurs = "1" maxOccurs = "1"/>
+</xs:sequence>
+</xs:complexType>

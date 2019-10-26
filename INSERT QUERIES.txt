@@ -1,0 +1,290 @@
+INSERT INTO "Movie" ("MovieID", "Name", "ReleaseDate", "Budget") VALUES
+    (1, 'Iron Man', 'May 2, 2008', 140000000),
+    (2, 'The Incredible Hulk', 'June 13, 2008', 150000000),
+    (3, 'Iron Man 2', 'May 7, 2010', 200000000),
+    (4, 'Thor', 'May 6, 2011', 150000000),
+    (5, 'Captain America: The First Avenger', 'July 22, 2011', 140000000),
+    (6, 'Marvel’s The Avengers', 'May 4, 2012', 220000000),
+    (7, 'Iron Man 3', 'May 3, 2013', 200000000),
+    (8, 'Thor: The Dark World', 'November 8, 2013', 170000000),
+    (9, 'Captain America: The Winter Soldier', 'April 4, 2014', 177000000),
+    (10, 'Guardians of the Galaxy', 'August 1, 2014', 232300000),
+    (11, 'The Notebook', 'May 20, 2004', 29000000),
+    (12, 'Shutter Island', 'February 13, 2010', 80000000),
+    (13, '21 Jump Street', 'March 12, 2012', 55000000),
+    (14, 'Life Of Pi', 'November 21, 2012', 120000000),
+    (15, 'The Incredibles', 'November 5, 2004', 92000000),
+    (16, '12 Years a Slave', 'November 8, 2013', 17100000),
+    (17, 'Moana', 'November 14, 2016', 150000000),
+    (18, 'Get Out', 'January 24, 2017', 4500000),
+    (19, 'Mamma Mia', 'July 18, 2008', 52000000),
+    (20, 'The Vow', 'February 6, 2012', 30000000),
+    (21, 'Inception', 'July 16, 2010', 160000000);
+
+INSERT INTO "Writer" ("WriterID", "Name") VALUES
+    (1, 'Mark Fergus'),
+    (2, 'Hawk Ostby'),
+    (3, 'Zak Penn'),
+    (4, 'Justin Theroux'),
+    (5, 'Ashley Edward Miller'),
+    (6, 'Zack Stentz'),
+    (7, 'Don Payne'),
+    (8, 'Christopher Markus'),
+    (9, 'Stephen McFeely'),
+    (10, 'Joss Whedon');
+
+INSERT INTO "Genre" ("GenreID", "Name", "Type Description") VALUES
+    (1, 'Action', 'All about the fights'),
+    (2, 'Adventure', 'Involves a finding new places and things'),
+    (3, 'Sci-Fi', 'Involves aliens'),
+    (4, 'Romance', 'All about the love'),
+    (5, 'Thriller', 'Expect the unexpected'),
+    (6, 'Comedy', 'Laugh your face off'),
+    (7, 'Animation', 'Just better than cartoons'),
+    (8, 'Drama', 'A lot of emotions to deal with'),
+    (9, 'Family', 'Something the whole family can watch'),
+    (10, 'Horror', 'All about the scares');
+
+INSERT INTO "Producer" ("ProducerID", "Name") VALUES
+    (1, 'Kevin Feige'),
+    (2, 'Avi Arad'),
+    (3, 'Gale Anne Hurd'),
+    (4, 'Amy Pascal'),
+    (5, 'Judy Craymer'),
+    (6, 'Gary Goetzman'),
+    (7, 'Mike Medavoy'),
+    (8, 'Arnold W. Messer'),
+    (9, 'Bradley J. Fischer'),
+    (10, 'Martin Scorsese');
+
+INSERT INTO "Location" ("LocationID", "Country" , "State/Province" , "Town") VALUES
+    (1, 'United States' , 'California', 'Los Angeles'),
+    (2, 'United States' , 'California', 'San Francisco'),
+    (3, 'United States', 'Florid', 'Miami'),
+    (4, 'United States', 'Florida', 'Orlando'),
+    (5, 'United States', 'New Jersey', 'Atlantic City'),
+    (6, 'United States', 'New York', 'New York City'),
+    (7, 'United States', 'New York', 'Buffalo'),
+    (8, 'United States', 'Texas', 'Houston'),
+    (9, 'Canada', 'Ontario', 'Toronto'),
+    (10, 'Canada', 'Ontario', 'Ottawa');
+
+INSERT INTO "Actor" ("ActorID", "LocationID" , "Name" , "Eye Color") VALUES
+    (1, 1 , 'Robert Downey Jr', 'Brown'),
+    (2, 1 , 'Chris Hemsworth', 'Blue'),
+    (3, 2, 'Chris Evans', 'Brown'),
+    (4, 2, 'Samuel L. Jackson', 'Black'),
+    (5, 3, 'Meryl Streep', 'Blue'),
+    (6, 4, 'Leonardo DiCaprio', 'Brown'),
+    (7, 5, 'Channing Tatum', 'Blue'),
+    (8, 5, 'Jonah Hill', 'Brown'),
+    (9, 9, 'Ryan Gosling', 'Brown'),
+    (10, 10, 'Ryan Reynolds', 'Black');
+
+INSERT INTO "Director" ("DirectorID", "LocationID", "Name") VALUES
+    (1, 1 , 'Jon Favreau'),
+    (2, 1 , 'Louis Leterrier'),
+    (3, 2, 'Kenneth Branagh'),
+    (4, 2, 'Joss Whedon'),
+    (5, 3, 'Nick Cassavetes'),
+    (6, 4, 	'Steve McQueen'),
+    (7, 5, 'Michael Sucsy'),
+    (8, 5, 'Ang Lee'),
+    (9, 9, 'Brad Bird'),
+    (10, 10, 'Shane Black');
+
+INSERT INTO "Review" ("MovieID", "Critic Rating", "Fan Rating") VALUES
+    (1, 80, 85),
+    (2, 78, 80),
+    (3, 70, 75),
+    (4, 75, 80),
+    (5, 77, 82),
+    (6, 83, 90),
+    (7, 80, 85),
+    (8, 78, 80),
+    (9, 89, 93),
+    (10, 85, 90),
+    (11, 80, 82),
+    (12, 85, 86),
+    (13, 72, 76),
+    (14, 73, 73),
+    (15, 80, 84),
+    (16, 86, 86),
+    (17, 83, 90),
+    (18, 73, 73),
+    (19, 75, 75),
+    (20, 73, 73),
+    (21, 83, 83);
+INSERT INTO "Famous Quote" ("Quote", "MovieID") VALUES
+    ('Give me a scotch. I am starving.', 1),
+    ('As far as I am concerned, that man is whole body is property of the U.S. army.', 2),
+    ('Sir! I am gonna have to ask you to exit the donut.', 3),
+    ('Whosoever holds this hammer, if he be worthy shall posses the power of thor.', 4),
+    ('What ever happens, stay who you are, not just a soldier, but a good man. ',5),
+    ('We have a Hulk', 6),
+    ('What are you waiting for? It is Christmas. Take em to church.', 7),
+    ('There is nothing more reassuring than realizing that the world is crazier than you are.', 8),
+    ('Before we get started, does anyone wanna get out? ',9),
+    ('I am Groot.', 10),
+    ('The best love is the kind that awakens the soul and makes us reach for more, that plants a fire in our hearts and brings peace to our minds, and that is what you havve given me.' ,11),
+    ('Which would be worse - to live as a monster? Or to die as a good man?', 12),
+    ('You know what happens to a handsome guy like me in jail?! It rhymes with grape! It rhymes with grape.' , 13),
+    ('I must say a word about fear', 14),
+    ('Honey, where is my super suit?', 15),
+    ('You will not live to see another day!', 16),
+    ('I am Moana of Motusi. You will board my boat and restore the heart to Tafiti.', 17),
+    ('Man, I told you not to go in that house.', 18),
+    ('Typical is not it? You wait 20 years for a dad and then three come along at once.', 19),
+    ('How do you look at the one you love and tell yourself it is time to walk away.', 20),
+    ('An idea is like a virus. Resilient. Highly contagious. And even the smallest seed of an idea can grow. It can grow to define or destroy you.', 21);
+
+INSERT INTO "Awards" ("AwardID", "MovieID", "Name") VALUES
+    (1,10 , 'Best graphics Oscar'),
+    (2, 19, 'Movie of the year Oscar 2008'),
+    (3, 6 , 'Sci-Fi Movie of the Year 2012'),
+    (4, 6, 'Fan Movie of the Year 2012'),
+    (5, 17, 'Best Musical 2016'),
+    (6, 13, 'Comedy of the year 2012'),
+    (7, 12, 'Thriller of the year 2010'),
+    (8, 16, 'Best Picture Oscar 2013'),
+    (9, 16, 'Movie of the Year 2013'),
+    (10, 20, 'Romance of the Year 2012');
+
+INSERT INTO "Cinema" ("CinemaID","Name") VALUES
+    (1, 'Cineplex'),
+    (2, 'Toronto Cinemas'),
+    (3, 'Silverbird Cinemas'),
+    (4, 'Regent theatre'),
+    (5, 'California theatres'),
+    (6, 'Texas Cinemas'),
+    (7, 'Dream Cinemas'),
+    (8, 'Florida National theatre'),
+    (9, 'Cinemax'),
+    (10, 'Movie and fun');
+
+INSERT INTO "Show time" ("MovieID", "CinemaID", "Price") VALUES
+    (1, 1, 10),
+    (2, 2, 12),
+    (3, 3, 12),
+    (4, 4, 12),
+    (5, 5, 12),
+    (6, 6, 12),
+    (7, 7, 12),
+    (8, 8, 15),
+    (9, 9, 15),
+    (10, 10, 15);
+INSERT INTO "Movie Category" ("MovieID", "GenreID") VALUES
+    (1, 1),
+	(1,2),
+	(1,3),
+    (2, 1),
+	(2,2),
+	(2,3),
+    (3, 1),
+	(3,2),
+	(3,3),
+    (4, 2),
+    (5, 2),
+    (6, 3),
+    (7, 3),
+    (8, 1),
+    (9, 2),
+    (10, 3),
+	(11,5),
+	(12,6),
+	(13,7),
+	(14,8),
+	(15,9),
+	(16,10),
+	(17, 5),
+	(18,6),
+	(19, 7),
+	(20,9),
+	(21, 10);
+
+INSERT INTO "Writer Movie Relationship" ("MovieID", "WriterID") VALUES
+    (1, 1),
+    (2, 1),
+    (3, 1),
+    (4, 2),
+    (5, 2),
+    (6, 3),
+    (7, 4),
+    (8, 5),
+    (9, 6),
+    (10, 6),
+    (11, 7),
+    (12, 8),
+    (13, 9),
+    (14, 9),
+    (15, 10);
+
+
+
+INSERT INTO "Movie Producer Relationship" ("MovieID", "ProducerID") VALUES
+    (1, 1),
+    (2, 1),
+    (3, 1),
+    (4, 2),
+    (5, 2),
+    (6, 3),
+    (7, 4),
+    (8, 5),
+    (9, 6),
+    (10, 6),
+    (11, 7),
+    (12, 8),
+    (13, 9),
+    (14, 9),
+    (15, 10);
+
+INSERT INTO "Director Movie Relationship" ("DirectorID", "MovieID") VALUES
+    (1, 1),
+    (2, 1),
+    (3, 1),
+    (4, 2),
+    (5, 2),
+    (6, 3),
+    (7, 4),
+    (8, 5),
+    (9, 6),
+    (10, 6);
+    
+INSERT INTO "Actor movie Relationship" ("ActorID", "MovieID") VALUES
+    (1, 1),
+    (1,6),
+    (2,6),
+     (3,6),
+     (4,6),
+    (2, 1),
+    (3, 1),
+    (4, 2),
+    (5, 2),
+    (6, 3),
+    (7, 4),
+    (8, 5),
+    (9, 6),
+    (10, 6);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

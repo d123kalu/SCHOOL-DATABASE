@@ -1,0 +1,345 @@
+/*
+Created: 2017-10-17
+Modified: 2017-10-30
+Model: PostgreSQL 9.5
+Database: PostgreSQL 9.5
+*/
+
+
+-- Create tables section -------------------------------------------------
+
+-- Table Writer Movie Relationship
+
+CREATE TABLE "Writer Movie Relationship"(
+ "MovieID" Bigint NOT NULL,
+ "WriterID" Bigint NOT NULL
+)
+;
+
+-- Add keys for table Writer Movie Relationship
+
+ALTER TABLE "Writer Movie Relationship" ADD CONSTRAINT "Key25" PRIMARY KEY ("MovieID","WriterID")
+;
+
+-- Table Writer
+
+CREATE TABLE "Writer"(
+ "WriterID" Bigint NOT NULL,
+ "Name" Text NOT NULL
+)
+;
+
+-- Add keys for table Writer
+
+ALTER TABLE "Writer" ADD CONSTRAINT "Key24" PRIMARY KEY ("WriterID")
+;
+
+ALTER TABLE "Writer" ADD CONSTRAINT "Writer ID" UNIQUE ("WriterID")
+;
+
+-- Table Movie Producer Relationship
+
+CREATE TABLE "Movie Producer Relationship"(
+ "MovieID" Bigint NOT NULL,
+ "ProducerID" Bigint NOT NULL
+)
+;
+
+-- Add keys for table Movie Producer Relationship
+
+ALTER TABLE "Movie Producer Relationship" ADD CONSTRAINT "Key23" PRIMARY KEY ("MovieID","ProducerID")
+;
+
+-- Table Director Movie Relationship
+
+CREATE TABLE "Director Movie Relationship"(
+ "DirectorID" Bigint NOT NULL,
+ "MovieID" Bigint NOT NULL
+)
+;
+
+-- Add keys for table Director Movie Relationship
+
+ALTER TABLE "Director Movie Relationship" ADD CONSTRAINT "Key21" PRIMARY KEY ("DirectorID","MovieID")
+;
+
+-- Table Actor movie Relationship
+
+CREATE TABLE "Actor movie Relationship"(
+ "ActorID" Bigint NOT NULL,
+ "MovieID" Bigint NOT NULL
+)
+;
+
+-- Add keys for table Actor movie Relationship
+
+ALTER TABLE "Actor movie Relationship" ADD CONSTRAINT "Key20" PRIMARY KEY ("ActorID","MovieID")
+;
+
+-- Table Movie
+
+CREATE TABLE "Movie"(
+ "MovieID" Bigint NOT NULL,
+ "Name" Text NOT NULL,
+ "ReleaseDate" Text NOT NULL,
+ "Budget" Bigint NOT NULL
+)
+;
+
+-- Add keys for table Movie
+
+ALTER TABLE "Movie" ADD CONSTRAINT "Key17" PRIMARY KEY ("MovieID")
+;
+
+ALTER TABLE "Movie" ADD CONSTRAINT "Movie ID" UNIQUE ("MovieID")
+;
+
+-- Table Genre
+
+CREATE TABLE "Genre"(
+ "GenreID" Bigint NOT NULL,
+ "Name" Text NOT NULL,
+ "Type Description" Text
+)
+;
+
+-- Add keys for table Genre
+
+ALTER TABLE "Genre" ADD CONSTRAINT "Key16" PRIMARY KEY ("GenreID")
+;
+
+ALTER TABLE "Genre" ADD CONSTRAINT "Genre ID" UNIQUE ("GenreID")
+;
+
+-- Table Producer
+
+CREATE TABLE "Producer"(
+ "ProducerID" Bigint NOT NULL,
+ "Name" Text NOT NULL
+)
+;
+
+-- Add keys for table Producer
+
+ALTER TABLE "Producer" ADD CONSTRAINT "Key7" PRIMARY KEY ("ProducerID")
+;
+
+-- Table Location
+
+CREATE TABLE "Location"(
+ "LocationID" Bigint NOT NULL,
+ "CinemaID" Bigint,
+ "Country" Text NOT NULL,
+ "State/Province" Text NOT NULL,
+ "Town" Text NOT NULL
+)
+;
+
+-- Create indexes for table Location
+
+CREATE INDEX "IX_Relationship47" ON "Location" ("CinemaID")
+;
+
+-- Add keys for table Location
+
+ALTER TABLE "Location" ADD CONSTRAINT "Key3" PRIMARY KEY ("LocationID")
+;
+
+ALTER TABLE "Location" ADD CONSTRAINT "Location ID" UNIQUE ("LocationID")
+;
+
+-- Table Actor
+
+CREATE TABLE "Actor"(
+ "ActorID" Bigint NOT NULL,
+ "LocationID" Bigint NOT NULL,
+ "Name" Text NOT NULL,
+ "Eye Color" Text
+)
+;
+
+-- Create indexes for table Actor
+
+CREATE INDEX "IX_Relationship41" ON "Actor" ("LocationID")
+;
+
+-- Add keys for table Actor
+
+ALTER TABLE "Actor" ADD CONSTRAINT "Key2" PRIMARY KEY ("ActorID")
+;
+
+ALTER TABLE "Actor" ADD CONSTRAINT "ActorID" UNIQUE ("ActorID")
+;
+
+-- Table Director
+
+CREATE TABLE "Director"(
+ "DirectorID" Bigint NOT NULL,
+ "LocationID" Bigint NOT NULL,
+ "Name" Text NOT NULL
+)
+;
+
+-- Create indexes for table Director
+
+CREATE INDEX "IX_Relationship40" ON "Director" ("LocationID")
+;
+
+-- Add keys for table Director
+
+ALTER TABLE "Director" ADD CONSTRAINT "Key1" PRIMARY KEY ("DirectorID")
+;
+
+ALTER TABLE "Director" ADD CONSTRAINT "DirectorID" UNIQUE ("DirectorID")
+;
+
+-- Table Review
+
+CREATE TABLE "Review"(
+ "MovieID" Bigint,
+ "Critic Rating" Bigint NOT NULL,
+ "Fan Rating" Bigint NOT NULL
+)
+;
+
+-- Create indexes for table Review
+
+CREATE INDEX "IX_Relationship36" ON "Review" ("MovieID")
+;
+
+-- Table Famous Quote
+
+CREATE TABLE "Famous Quote"(
+ "MovieID" Bigint,
+ "Quote" Text NOT NULL
+)
+;
+
+-- Create indexes for table Famous Quote
+
+CREATE INDEX "IX_Relationship45" ON "Famous Quote" ("MovieID")
+;
+
+-- Table Awards
+
+CREATE TABLE "Awards"(
+ "AwardID" Bigint NOT NULL,
+ "MovieID" Bigint,
+ "Name" Text NOT NULL
+)
+;
+
+-- Create indexes for table Awards
+
+CREATE INDEX "IX_Relationship46" ON "Awards" ("MovieID")
+;
+
+-- Add keys for table Awards
+
+ALTER TABLE "Awards" ADD CONSTRAINT "Key27" PRIMARY KEY ("AwardID")
+;
+
+ALTER TABLE "Awards" ADD CONSTRAINT "Award ID" UNIQUE ("AwardID")
+;
+
+-- Table Movie Category
+
+CREATE TABLE "Movie Category"(
+ "MovieID" Bigint NOT NULL,
+ "GenreID" Bigint NOT NULL
+)
+;
+
+-- Add keys for table Movie Category
+
+ALTER TABLE "Movie Category" ADD CONSTRAINT "Key28" PRIMARY KEY ("MovieID","GenreID")
+;
+
+-- Table Cinema
+
+CREATE TABLE "Cinema"(
+ "CinemaID" Bigint NOT NULL,
+ "Name" Text NOT NULL
+)
+;
+
+-- Add keys for table Cinema
+
+ALTER TABLE "Cinema" ADD CONSTRAINT "Key29" PRIMARY KEY ("CinemaID")
+;
+
+ALTER TABLE "Cinema" ADD CONSTRAINT "Cinema ID" UNIQUE ("CinemaID")
+;
+
+-- Table Show time
+
+CREATE TABLE "Show time"(
+ "MovieID" Bigint NOT NULL,
+ "CinemaID" Bigint NOT NULL,
+ "Price" Bigint NOT NULL
+)
+;
+
+-- Add keys for table Show time
+
+ALTER TABLE "Show time" ADD CONSTRAINT "Key30" PRIMARY KEY ("MovieID","CinemaID")
+;
+-- Create foreign keys (relationships) section ------------------------------------------------- 
+
+ALTER TABLE "Writer Movie Relationship" ADD CONSTRAINT "writing for" FOREIGN KEY ("MovieID") REFERENCES "Movie" ("MovieID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE "Writer Movie Relationship" ADD CONSTRAINT "writes" FOREIGN KEY ("WriterID") REFERENCES "Writer" ("WriterID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE "Actor" ADD CONSTRAINT "Lives at" FOREIGN KEY ("LocationID") REFERENCES "Location" ("LocationID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE "Director" ADD CONSTRAINT "lives at" FOREIGN KEY ("LocationID") REFERENCES "Location" ("LocationID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE "Movie Producer Relationship" ADD CONSTRAINT "made by" FOREIGN KEY ("ProducerID") REFERENCES "Producer" ("ProducerID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE "Movie Producer Relationship" ADD CONSTRAINT "produced by" FOREIGN KEY ("MovieID") REFERENCES "Movie" ("MovieID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE "Review" ADD CONSTRAINT "has" FOREIGN KEY ("MovieID") REFERENCES "Movie" ("MovieID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE "Director Movie Relationship" ADD CONSTRAINT "with" FOREIGN KEY ("MovieID") REFERENCES "Movie" ("MovieID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE "Director Movie Relationship" ADD CONSTRAINT "has" FOREIGN KEY ("DirectorID") REFERENCES "Director" ("DirectorID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE "Actor movie Relationship" ADD CONSTRAINT "appears in" FOREIGN KEY ("MovieID") REFERENCES "Movie" ("MovieID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE "Actor movie Relationship" ADD CONSTRAINT "acts in" FOREIGN KEY ("ActorID") REFERENCES "Actor" ("ActorID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE "Famous Quote" ADD CONSTRAINT "Occurs in" FOREIGN KEY ("MovieID") REFERENCES "Movie" ("MovieID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE "Awards" ADD CONSTRAINT "wins" FOREIGN KEY ("MovieID") REFERENCES "Movie" ("MovieID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE "Movie Category" ADD CONSTRAINT "linked to" FOREIGN KEY ("GenreID") REFERENCES "Genre" ("GenreID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE "Movie Category" ADD CONSTRAINT "has a specified" FOREIGN KEY ("MovieID") REFERENCES "Movie" ("MovieID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE "Show time" ADD CONSTRAINT "shown at" FOREIGN KEY ("MovieID") REFERENCES "Movie" ("MovieID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE "Show time" ADD CONSTRAINT "Displayed in" FOREIGN KEY ("CinemaID") REFERENCES "Cinema" ("CinemaID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE "Location" ADD CONSTRAINT "has" FOREIGN KEY ("CinemaID") REFERENCES "Cinema" ("CinemaID") ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+
+
+
